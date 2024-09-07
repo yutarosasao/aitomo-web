@@ -11,7 +11,7 @@ export default function CompleteLandingPage() {
     <div className='min-h-screen bg-gradient-to-br from-teal-100 via-mint-100 to-emerald-100 font-noto-sans-jp'>
       <header className='bg-emerald-800 text-white py-4 sticky top-0 z-50'>
         <div className='container mx-auto px-4 flex justify-between items-center'>
-          <h1 className='text-2xl font-bold'>AIトーク友達</h1>
+          <h1 className='text-2xl font-bold'>アイトモ</h1>
           <Navigation />
         </div>
       </header>
@@ -36,7 +36,7 @@ export default function CompleteLandingPage() {
               </div>
             </div>
             <div className='md:w-1/2'>
-              <Image src='/avatars/avatar1.png' alt='AIトーク友達キャラクター' width={500} height={500} className='w-full h-auto max-w-md mx-auto rounded-full shadow-2xl border-4 border-white' />
+              <Image src='/avatars/avatar-1.png' alt='AIトーク友達キャラクター' width={500} height={500} className='w-full h-auto max-w-md mx-auto rounded-full shadow-2xl border-4 border-white' />
             </div>
           </div>
           <div className='text-center mt-12'>
@@ -82,8 +82,8 @@ export default function CompleteLandingPage() {
               {
                 src: '/screenshots/screenshot-2.png',
                 alt: 'アルバム画面',
-                title: '報酬システム',
-                description: '会話を重ねるごとにポイントを獲得し、素敵なキャラクター画像をアンロックできます。',
+                title: 'デイリーボーナス',
+                description: '毎日アプリを起動してデイリーボーナスを獲得し、限定のアルバムをゲットできます。',
               },
               {
                 src: '/screenshots/screenshot-3.png',
@@ -108,16 +108,22 @@ export default function CompleteLandingPage() {
         <section id='usage' className='mb-20'>
           <h2 className='text-3xl font-bold mb-8 text-center text-emerald-800'>使い方</h2>
           <Tabs defaultValue='chat' className='w-full'>
-            <TabsList className='grid w-full grid-cols-3'>
-              <TabsTrigger value='chat'>チャット</TabsTrigger>
-              <TabsTrigger value='voice'>音声会話</TabsTrigger>
-              <TabsTrigger value='custom'>カスタマイズ</TabsTrigger>
+            <TabsList className='grid w-full grid-cols-3 bg-emerald-100'>
+              <TabsTrigger value='chat' className='data-[state=active]:bg-emerald-500 data-[state=active]:text-white'>
+                チャット
+              </TabsTrigger>
+              <TabsTrigger value='voice' className='data-[state=active]:bg-emerald-500 data-[state=active]:text-white'>
+                音声会話
+              </TabsTrigger>
+              <TabsTrigger value='custom' className='data-[state=active]:bg-emerald-500 data-[state=active]:text-white'>
+                カスタマイズ
+              </TabsTrigger>
             </TabsList>
             <TabsContent value='chat' className='mt-4'>
               <Card>
                 <CardContent className='p-6'>
                   <h3 className='text-xl font-bold mb-4 text-emerald-700'>テキストチャット</h3>
-                  <p className='text-emerald-600'>1. アプリを開き、チャットモードを選択</p>
+                  <p className='text-emerald-600'>1. アプリを開き、テキスト入力を開始</p>
                   <p className='text-emerald-600'>2. メッセージを入力し、送信ボタンをタップ</p>
                   <p className='text-emerald-600'>3. AIからの返信を受け取り、会話を楽しむ</p>
                 </CardContent>
@@ -127,9 +133,9 @@ export default function CompleteLandingPage() {
               <Card>
                 <CardContent className='p-6'>
                   <h3 className='text-xl font-bold mb-4 text-emerald-700'>音声会話</h3>
-                  <p className='text-emerald-600'>1. アプリを開き、音声モードを選択</p>
-                  <p className='text-emerald-600'>2. マイクボタンを押しながら話</p>
-                  <p className='text-emerald-600'>3. AIの音声応答を聞き、会話を楽しむ</p>
+                  <p className='text-emerald-600'>1. アプリを開き、マイクボタンを押しながら、話しかける</p>
+                  <p className='text-emerald-600'>3. AIが音声で応答し、会話を楽しむ</p>
+                  <p className='text-emerald-600'>4. 音声認識の結果とAIの応答はテキストでも表示されます</p>
                 </CardContent>
               </Card>
             </TabsContent>
@@ -137,9 +143,10 @@ export default function CompleteLandingPage() {
               <Card>
                 <CardContent className='p-6'>
                   <h3 className='text-xl font-bold mb-4 text-emerald-700'>AIのカスタマイズ</h3>
-                  <p className='text-emerald-600'>1. 設定メニューから「AIカスタマイズ」を選択</p>
-                  <p className='text-emerald-600'>2. 性格、知識レベル、話し方などを調整</p>
-                  <p className='text-emerald-600'>3. 保存して、カスタマイズされたAIと会話を楽しむ</p>
+                  <p className='text-emerald-600'>1. ホームの左にある設定ボタンを押す</p>
+                  <p className='text-emerald-600'>2. AIの性格や話し方を好みに合わせて調整</p>
+                  <p className='text-emerald-600'>3. 特定の話題や知識を追加してAIをパーソナライズ</p>
+                  <p className='text-emerald-600'>4. 設定を保存し、カスタマイズされたAIと会話を楽しむ</p>
                 </CardContent>
               </Card>
             </TabsContent>
@@ -150,9 +157,9 @@ export default function CompleteLandingPage() {
           <h2 className='text-3xl font-bold mb-8 text-center text-emerald-800'>ユーザーの声</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {[
-              { name: '田中さん', comment: '日々の悩み相談に使っています。心が軽くなります。', rating: 5 },
-              { name: '佐藤さん', comment: '英会話の練習に最適！発音も良くて勉強になります。', rating: 4 },
-              { name: '鈴木さん', comment: 'アイデア出しに重宝しています。新しい視点が得られます。', rating: 5 },
+              { name: 'Tさん', comment: '毎日の癒しになっています。AIの返答が面白くて、ついつい長話してしまいます。', rating: 5 },
+              { name: 'Kさん', comment: '仕事の愚痴を吐き出せるので、ストレス解消につながっています。', rating: 4 },
+              { name: 'Mさん', comment: '仕事の息抜きに使っています。ちょっとした相談にも乗ってくれて、新しい視点をもらえるのが良いですね。', rating: 5 },
             ].map((review, index) => (
               <Card key={index} className='overflow-hidden transition-all duration-300 hover:shadow-lg bg-white/80 backdrop-blur-sm'>
                 <CardContent className='p-6'>
@@ -173,7 +180,7 @@ export default function CompleteLandingPage() {
 
         <section id='download' className='text-center mb-20'>
           <h2 className='text-3xl font-bold mb-6 text-emerald-800'>今すぐ始めよう</h2>
-          <p className='text-xl text-emerald-600 mb-8'>AIトーク友達があなたの日常をもっと楽しく、もっと便利にします。</p>
+          <p className='text-xl text-emerald-600 mb-8'>アイトモがあなたの日常をもっと楽しく、もっと便利にします。</p>
           <div className='hidden md:flex flex-col items-center mb-8'>
             <QRCodeDownload />
           </div>
@@ -195,22 +202,27 @@ export default function CompleteLandingPage() {
       <footer className='bg-emerald-800 text-white py-8'>
         <div className='container mx-auto px-4'>
           <div className='flex flex-col md:flex-row justify-between items-center'>
-            <p>&copy; 2023 AIトーク友達 All rights reserved.</p>
+            <p>&copy; 2023 アイトモ All rights reserved.</p>
             <nav className='mt-4 md:mt-0'>
               <ul className='flex space-x-4'>
                 <li>
-                  <a href='#' className='hover:text-emerald-300'>
+                  <a href='https://fringe-boar-bcc.notion.site/_-5139028c3cea4b3292686aa6b75737f6' className='hover:text-emerald-300'>
                     プライバシーポリシー
                   </a>
                 </li>
                 <li>
-                  <a href='#' className='hover:text-emerald-300'>
+                  <a href='https://fringe-boar-bcc.notion.site/_-d0cba038cef24abf80bf054ca382555a' className='hover:text-emerald-300'>
                     利用規約
                   </a>
                 </li>
                 <li>
-                  <a href='#' className='hover:text-emerald-300'>
+                  <a href='https://fringe-boar-bcc.notion.site/209322c24e0f49c38a1f3abdb3dd0757' className='hover:text-emerald-300'>
                     お問い合わせ
+                  </a>
+                </li>
+                <li>
+                  <a href='https://kamedia.site/' className='hover:text-emerald-300'>
+                    運営者情報
                   </a>
                 </li>
               </ul>

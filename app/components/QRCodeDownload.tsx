@@ -11,7 +11,7 @@ const QRCodeDownload: React.FC = () => {
       <div className='bg-white p-4 rounded-lg shadow-lg'>
         <QRCodeSVG value={appUrl} size={200} bgColor={'#ffffff'} fgColor={'#000000'} level={'L'} includeMargin={false} />
       </div>
-      <p className='mt-4 text-sm text-white'>QRコードをスキャンしてダウンロード</p>
+      <p className='mt-4 text-sm text-black'>QRコードをスキャンしてダウンロード</p>
     </div>
   );
 };
