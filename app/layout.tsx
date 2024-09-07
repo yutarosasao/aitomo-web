@@ -10,8 +10,30 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: 'AIトーク友達',
-  description: 'あなたの日常に、ちょっと楽しい会話を',
+  title: {
+    default: 'アイトモ',
+    template: '%s | アイトモ',
+  },
+  description: 'VOICEVOX搭載の音声会話&チャットアプリ',
+  openGraph: {
+    title: 'アイトモ',
+    description: 'VOICEVOX搭載の音声会話&チャットアプリ',
+    url: 'https://aitomo.com',
+    siteName: 'アイトモ',
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

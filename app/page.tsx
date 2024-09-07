@@ -1,8 +1,10 @@
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MessageCircle, Mic, Zap, Sparkles, Star, Apple, Smartphone, User, Image as ImageIcon, ChevronDown } from 'lucide-react';
+import { MessageCircle, Mic, Zap, Sparkles, Star, Apple, User, PlayCircle, Image as ImageIcon, ChevronDown } from 'lucide-react';
+import QRCodeDownload from './components/QRCodeDownload';
+import Navigation from './components/Navigation';
 
 export default function CompleteLandingPage() {
   return (
@@ -10,30 +12,7 @@ export default function CompleteLandingPage() {
       <header className='bg-emerald-800 text-white py-4 sticky top-0 z-50'>
         <div className='container mx-auto px-4 flex justify-between items-center'>
           <h1 className='text-2xl font-bold'>AIトーク友達</h1>
-          <nav>
-            <ul className='flex space-x-4'>
-              <li>
-                <a href='#features' className='hover:text-emerald-300'>
-                  機能
-                </a>
-              </li>
-              <li>
-                <a href='#screenshots' className='hover:text-emerald-300'>
-                  スクリーンショット
-                </a>
-              </li>
-              <li>
-                <a href='#usage' className='hover:text-emerald-300'>
-                  使い方
-                </a>
-              </li>
-              <li>
-                <a href='#reviews' className='hover:text-emerald-300'>
-                  レビュー
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <Navigation />
         </div>
       </header>
 
@@ -44,12 +23,16 @@ export default function CompleteLandingPage() {
               <h2 className='text-4xl md:text-5xl font-bold mb-4 text-emerald-800'>AIがあなたの話し相手に</h2>
               <p className='text-xl text-emerald-600 mb-8'>自然な会話、リアルタイムの応答、そしてあなた専用のAI。新しいコミュニケーションの形を体験しましょう。</p>
               <div className='flex space-x-4'>
-                <Button size='lg' className='bg-emerald-500 hover:bg-emerald-600 text-white'>
-                  <Apple className='mr-2 h-5 w-5' /> App Store
-                </Button>
-                <Button size='lg' className='bg-emerald-500 hover:bg-emerald-600 text-white'>
-                  <Smartphone className='mr-2 h-5 w-5' /> Google Play
-                </Button>
+                <Link
+                  href='https://apps.apple.com/jp/app/%E3%81%9A%E3%82%93%E3%81%A0%E3%82%82%E3%82%93ai%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E9%9F%B3%E5%A3%B0%E4%BC%9A%E8%A9%B1%E3%82%A2%E3%83%97%E3%83%AA-%E3%82%A2%E3%82%A4%E3%83%88%E3%83%A2/id6503661522'
+                  className='bg-emerald-500 hover:bg-emerald-600 text-white text-lg px-8 py-3 rounded-full shadow-lg flex items-center transition-all duration-300 ease-in-out transform hover:scale-105'>
+                  <Apple className='mr-2 h-5 w-5' />
+                  App Store
+                </Link>
+                <Link href='https://play.google.com/store/apps/details?id=com.aitomochatapp' className='bg-emerald-500 hover:bg-emerald-600 text-white text-lg px-8 py-3 rounded-full shadow-lg flex items-center transition-all duration-300 ease-in-out transform hover:scale-105'>
+                  <PlayCircle className='mr-2 h-5 w-5' />
+                  Google Play
+                </Link>
               </div>
             </div>
             <div className='md:w-1/2'>
@@ -145,7 +128,7 @@ export default function CompleteLandingPage() {
                 <CardContent className='p-6'>
                   <h3 className='text-xl font-bold mb-4 text-emerald-700'>音声会話</h3>
                   <p className='text-emerald-600'>1. アプリを開き、音声モードを選択</p>
-                  <p className='text-emerald-600'>2. マイクボタンを押しながら話す</p>
+                  <p className='text-emerald-600'>2. マイクボタンを押しながら話</p>
                   <p className='text-emerald-600'>3. AIの音声応答を聞き、会話を楽しむ</p>
                 </CardContent>
               </Card>
@@ -168,7 +151,7 @@ export default function CompleteLandingPage() {
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {[
               { name: '田中さん', comment: '日々の悩み相談に使っています。心が軽くなります。', rating: 5 },
-              { name: '佐藤さん', comment: '英会話の練習に最適！発音も自然で勉強になります。', rating: 4 },
+              { name: '佐藤さん', comment: '英会話の練習に最適！発音も良くて勉強になります。', rating: 4 },
               { name: '鈴木さん', comment: 'アイデア出しに重宝しています。新しい視点が得られます。', rating: 5 },
             ].map((review, index) => (
               <Card key={index} className='overflow-hidden transition-all duration-300 hover:shadow-lg bg-white/80 backdrop-blur-sm'>
@@ -188,16 +171,23 @@ export default function CompleteLandingPage() {
           </div>
         </section>
 
-        <section className='text-center mb-20'>
+        <section id='download' className='text-center mb-20'>
           <h2 className='text-3xl font-bold mb-6 text-emerald-800'>今すぐ始めよう</h2>
           <p className='text-xl text-emerald-600 mb-8'>AIトーク友達があなたの日常をもっと楽しく、もっと便利にします。</p>
-          <div className='flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4'>
-            <Button size='lg' className='bg-emerald-500 hover:bg-emerald-600 text-white transform transition-all duration-300 hover:scale-105'>
-              <Apple className='mr-2 h-5 w-5' /> App Storeでダウンロード
-            </Button>
-            <Button size='lg' className='bg-emerald-500 hover:bg-emerald-600 text-white transform transition-all duration-300 hover:scale-105'>
-              <Smartphone className='mr-2 h-5 w-5' /> Google Playでダウンロード
-            </Button>
+          <div className='hidden md:flex flex-col items-center mb-8'>
+            <QRCodeDownload />
+          </div>
+          <div className='flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6'>
+            <Link
+              href='https://apps.apple.com/jp/app/%E3%81%9A%E3%82%93%E3%81%A0%E3%82%82%E3%82%93ai%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E9%9F%B3%E5%A3%B0%E4%BC%9A%E8%A9%B1%E3%82%A2%E3%83%97%E3%83%AA-%E3%82%A2%E3%82%A4%E3%83%88%E3%83%A2/id6503661522'
+              className='bg-black hover:bg-gray-800 text-white text-lg px-8 py-3 rounded-full shadow-lg flex items-center transition-all duration-300 ease-in-out transform hover:scale-105'>
+              <Apple className='mr-2 h-5 w-5' />
+              App Store
+            </Link>
+            <Link href='https://play.google.com/store/apps/details?id=com.aitomochatapp' className='bg-white hover:bg-gray-100 text-black text-lg px-8 py-3 rounded-full shadow-lg flex items-center transition-all duration-300 ease-in-out transform hover:scale-105'>
+              <PlayCircle className='mr-2 h-5 w-5' />
+              Google Play
+            </Link>
           </div>
         </section>
       </main>
